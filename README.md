@@ -80,12 +80,6 @@ results.save()   # Save to outputs/
 
 ---
 
-## Model Architecture
-- **YOLOv5 Backbone:** CSP-based feature extraction with multi-scale capability  
-- **Neck:** PANet for feature aggregation  
-- **Head:** YOLO detection head for bounding box regression and class prediction  
-- **VI-Track (optional):** Multi-object tracking with velocity-direction weighted correlation for stable trajectories
-
 ---
 
 ## Outputs
