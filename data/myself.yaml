@@ -1,0 +1,14 @@
+# Please insure that your custom_dataset are put in same parent dir with YOLOv6_DIR
+train: ./datasets/VisDrone2019/images/train # train images
+val: ./datasets/VisDrone2019/images/val # val images
+test: ./datasets/VisDrone2019/images/test # test images (optional)
+
+# whether it is coco dataset, only coco dataset should be set to True.
+#is_coco: False
+# Classes
+#nc: 2 # number of classes
+#names: ['aircraft','oiltank']  # class names
+
+nc: 10 # number of classes
+names: ['pedestrian','people','bicycle','car','van',
+    'truck','tricycle','awning-tricycle','bus','motor']  # class names
