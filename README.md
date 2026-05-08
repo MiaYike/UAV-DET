@@ -28,40 +28,66 @@ DroneVehicle	75.7%	-
 
 VI-Track improves trajectory stability: total trajectories decrease, average trajectory lifetime increases, fragmentation index decreases (see Table 5 in paper).
 
-Repository Structure
-UAV-DET/
-├─ datasets/          # VisDrone2019-DET, DroneVehicle, self-collected UAV videos
-├─ models/            # Pre-trained MSFSA-Net weights
-├─ utils/             # Helper functions
-├─ train.py           # Training script
-├─ test.py            # Evaluation script
-├─ track.py           # VI-Track tracking
-└─ README.md
-Installation
-git clone https://github.com/MiaYike/UAV-DET.git
-cd UAV-DET
-pip install -r requirements.txt
-Python 3.8
-PyTorch 1.13.0
-CUDA 11.7
-Usage
-Detection
-python test.py --data /path/to/dataset --weights models/msfsa_net.pth --img-size 640
-Tracking
-python track.py --video /path/to/uav_video.mp4 --det-model models/msfsa_net.pth
-Training
-python train.py --data /path/to/dataset --epochs 100 --batch-size 16
-Datasets
-VisDrone2019-DET: Public UAV aerial dataset for vehicle detection. Used for ablation and comparative experiments.
-VisDrone2019-DET Challenge
-DroneVehicle: UAV RGB-Infrared cross-modality vehicle detection dataset. Used to validate detection performance across modalities.
-Refer to Sun et al., IEEE T-CSVT, 2024 [22]
-UAV video streams (self-collected): Videos captured by UAVs to evaluate VI-Track multi-object tracking algorithm under dense and intersecting motion scenarios. These videos are not publicly available but used for tracking validation only.
-Model Architecture
-MSFSA-Net
-Backbone: High-resolution multi-scale feature fusion
-Neck: SARAFE module for content-adaptive upsampling
-Detection Head: Additional T-Head for micro-object detection
-VI-Track
-Motion consistency evaluated using cosine similarity between trajectory velocity and candidate displacement vectors
-Weighted penalty applied for direction deviations
+```
+- Python 3.8+
+- PyTorch 1.13.0
+- CUDA 11.7 (for GPU acceleration)
+
+---
+
+## Usage
+
+### Detection
+```bash
+python scripts/test.py --data /path/to/dataset --weights models/yolov5s.pt --img-size 640
+```
+
+### Tracking
+```bash
+python scripts/track.py --video /path/to/uav_video.mp4 --det-model models/yolov5s.pt
+```
+
+### Training
+```bash
+python scripts/train.py --data /path/to/dataset --epochs 100 --batch-size 16
+```
+
+### Inference Example (Python)
+```python
+import torch
+
+# Load YOLOv5 model
+model = torch.hub.load("ultralytics/yolov5", "yolov5s")
+
+# Input image (URL or local path)
+img = "https://ultralytics.com/images/zidane.jpg"
+
+# Perform inference
+results = model(img)
+
+# Process results
+results.print()  # Console output
+results.show()   # Display image
+results.save()   # Save to outputs/
+```
+
+---
+
+## Datasets
+- **VisDrone2019-DET:** Public UAV aerial dataset for vehicle detection. Used for ablation and comparison experiments.  
+- **DroneVehicle:** UAV RGB-Infrared cross-modality dataset to validate detection performance across modalities.  
+- **UAV_videos:** Self-collected UAV video streams used for multi-object tracking evaluation. Not publicly available.
+
+---
+
+## Model Architecture
+- **YOLOv5 Backbone:** CSP-based feature extraction with multi-scale capability  
+- **Neck:** PANet for feature aggregation  
+- **Head:** YOLO detection head for bounding box regression and class prediction  
+- **VI-Track (optional):** Multi-object tracking with velocity-direction weighted correlation for stable trajectories
+
+---
+
+## Outputs
+- Detection results and visualizations saved in `outputs/`  
+- Cropped predictions and prediction tables accessible via Python results object
