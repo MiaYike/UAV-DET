@@ -28,54 +28,14 @@ DroneVehicle	75.7%	-
 
 VI-Track improves trajectory stability: total trajectories decrease, average trajectory lifetime increases, fragmentation index decreases (see Table 5 in paper).
 
-```
-- Python 3.8+
-- PyTorch 1.13.0
-- CUDA 11.7 (for GPU acceleration)
 
----
 
-## Usage
-
-### Detection
-```bash
-python scripts/test.py --data /path/to/dataset --weights models/yolov5s.pt --img-size 640
-```
-
-### Tracking
-```bash
-python scripts/track.py --video /path/to/uav_video.mp4 --det-model models/yolov5s.pt
-```
-
-### Training
-```bash
-python scripts/train.py --data /path/to/dataset --epochs 100 --batch-size 16
-```
-
-### Inference Example (Python)
-```python
-import torch
-
-# Load YOLOv5 model
-model = torch.hub.load("ultralytics/yolov5", "yolov5s")
-
-# Input image (URL or local path)
-img = "https://ultralytics.com/images/zidane.jpg"
-
-# Perform inference
-results = model(img)
-
-# Process results
-results.print()  # Console output
-results.show()   # Display image
-results.save()   # Save to outputs/
-```
 
 ---
 
 ## Datasets
-- **VisDrone2019-DET:** Public UAV aerial dataset for vehicle detection. Used for ablation and comparison experiments.  
-- **DroneVehicle:** UAV RGB-Infrared cross-modality dataset to validate detection performance across modalities.  
+- **VisDrone2019-DET:** Public UAV aerial dataset for vehicle detection. Used for ablation and comparison experiments.  https://github.com/VisDrone/VisDrone-Dataset
+- **DroneVehicle:** UAV RGB-Infrared cross-modality dataset to validate detection performance across modalities.  https://github.com/VisDrone/DroneVehicle
 - **UAV_videos:** Self-collected UAV video streams used for multi-object tracking evaluation. Not publicly available.
 
 ---
