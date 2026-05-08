@@ -80,7 +80,6 @@ results.save()   # Save to outputs/
 
 ---
 
----
 
 ## Outputs
 - Detection results and visualizations saved in `outputs/`  
