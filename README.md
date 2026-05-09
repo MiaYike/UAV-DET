@@ -43,4 +43,8 @@ VI-Track improves trajectory stability: total trajectories decrease, average tra
 
 ## Outputs
 - The weights trained by the improved model are available in the link below
+- Please send a private message to receive the extraction code
+- experimental_ckpt：https://pan.baidu.com/share/init?surl=u8THZmk7ednGKiqUtGaVuw   
 - The original data trained by the improved model is available at the link below
+- Please send a private message to receive the extraction code
+- experimental_data：https://pan.baidu.com/share/init?surl=bYQrizn5jBcjPLapR-BwCQ
