@@ -42,5 +42,5 @@ VI-Track improves trajectory stability: total trajectories decrease, average tra
 
 
 ## Outputs
-- Detection results and visualizations saved in `outputs/`  
-- Cropped predictions and prediction tables accessible via Python results object
+- The weights trained by the improved model are available in the link below
+- The original data trained by the improved model is available at the link below
